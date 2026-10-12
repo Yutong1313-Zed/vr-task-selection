@@ -1,0 +1,24 @@
+# Dependencies / caches that must never reach the repository
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Local scratch
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+# Local preview screenshots (not part of the published site)
+docs/
+
+# Manuscript artefacts — never publish the full text from this repository
+*.pdf
+*.docx
+*.doc
+*.tex
+*.zip
+
+# Local preview / tooling
+.cache/

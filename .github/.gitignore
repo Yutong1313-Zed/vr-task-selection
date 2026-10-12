@@ -1,0 +1,7 @@
+# Keep the toolchain out of version control.
+#
+# A GitHub Actions workflow for Pages deployment lived here, but pushing it
+# requires a Personal Access Token with the extra `workflow` scope. The site is
+# instead published straight from the `main` branch root, so no CI file is
+# needed at all. Create this directory again only if you add a token with the
+# `workflow` scope.
