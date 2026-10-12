@@ -38,15 +38,42 @@ python -m http.server 8000
 
 ## Publishing
 
+The site is served by GitHub Pages **from the `main` branch root** — no CI
+workflow is needed, and none is committed (pushing a workflow file requires a
+Personal Access Token with the extra `workflow` scope).
+
+To republish after editing:
+
 ```powershell
-.\push-to-github.ps1 -User Yutong1313-Zed
+cd D:\vr-task-selection
+git add -A
+git commit -m "Update showcase"
+git push
 ```
 
-The workflow in `.github/workflows/pages.yml` refuses to publish if any
-manuscript artefact (`*.pdf`, `*.docx`, `*.doc`, `*.tex`, `*.zip`) is found in
-the tree, so the full text cannot leak through this repository by accident.
-After the first push, set **Settings → Pages → Build and deployment → Source =
-GitHub Actions**.
+GitHub Pages picks the change up automatically, usually within a minute.
+
+`push-to-github.ps1` wraps the whole first-time setup (create repo, push,
+enable Pages). Pass a token with the `repo` scope via `-Token` or the
+`GITHUB_TOKEN` environment variable; otherwise Git Credential Manager will open
+a browser sign-in.
+
+```powershell
+.\push-to-github.ps1 -User Yutong1313-Zed -Create -Token $env:GITHUB_TOKEN
+```
+
+**Never commit a token.** Keep it in Windows Credential Manager or an
+environment variable, not in a file in this repository.
+
+### No full text, by construction
+
+`.gitignore` excludes `*.pdf`, `*.docx`, `*.doc`, `*.tex` and `*.zip`, and
+`tools/check_site.py` fails if any such file exists in the tree. Run it before
+every push:
+
+```powershell
+python tools\check_site.py
+```
 
 ## Regenerating figures
 

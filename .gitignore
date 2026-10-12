@@ -22,3 +22,8 @@ docs/
 
 # Local preview / tooling
 .cache/
+
+# A GitHub Actions workflow is intentionally absent: pushing one needs a PAT
+# with the extra `workflow` scope. Pages publishes straight from the `main`
+# branch root instead. See .github/.gitignore.
+.github/workflows/
