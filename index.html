@@ -3,43 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Multimodal-Assisted Task-Level Selection for Dense Similar Objects in VR</title>
-<meta name="description" content="A speech-anchored multimodal method for task-level object selection in dense, visually similar VR scenes. 20-participant user study against controller ray casting.">
+<title>Multimodal Task-Level Selection — System Demo</title>
+<meta name="description" content="System demo: a speech-anchored multimodal pipeline that grounds task-level object selection in dense VR scenes using gaze, visual candidates and constrained language parsing.">
 <meta name="author" content="Yuntong Zhang, Yue Yin, Yu Zhao, Jiaxin Yu, Liang Xie">
-<meta name="theme-color" content="#0b0f16">
+<meta name="theme-color" content="#080c12">
 
-<meta property="og:type" content="article">
-<meta property="og:title" content="Multimodal-Assisted Task-Level Selection for Dense Similar Objects in Virtual Reality">
-<meta property="og:description" content="Speech-anchored fusion of gaze, visual candidates, and constrained language parsing for task-level object selection in dense VR scenes.">
-<meta property="og:image" content="assets/img/pipeline.webp">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Multimodal Task-Level Selection — System Demo">
+<meta property="og:description" content="Speak a task, look at the scene: gaze + speech + vision fused into executable VR scene commands.">
+<meta property="og:image" content="assets/img/demo-fusion.webp">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="preload" as="image" href="assets/img/pipeline.webp">
+<link rel="preload" as="image" href="assets/img/demo-fusion.webp">
 <link rel="stylesheet" href="assets/css/site.css">
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "headline": "Multimodal-Assisted Task-Level Selection for Dense Similar Objects in Virtual Reality",
-  "name": "Multimodal-Assisted Task-Level Selection for Dense Similar Objects in Virtual Reality",
-  "inLanguage": "en",
-  "abstract": "A multimodal task-level selection method for dense and visually similar objects in VR. Speech anchors the integration of gaze, visual object candidates, and constrained language parsing for task-level object inference, evaluated in a 20-participant outdoor VR scene relocation study against controller ray casting.",
+  "@type": "SoftwareApplication",
+  "name": "Speech-anchored multimodal task-level object selection",
+  "applicationCategory": "Virtual reality interaction system",
+  "operatingSystem": "Pico 4 Pro (Android) + Windows workstation",
+  "abstract": "A prototype that fuses speech, gaze and visual candidates into task-level object selection in dense, visually similar VR scenes, evaluated in a 20-participant study against controller ray casting.",
   "author": [
-    { "@type": "Person", "name": "Yuntong Zhang", "affiliation": "Tianjin University of Technology (TJUT)" },
-    { "@type": "Person", "name": "Yue Yin", "affiliation": "Defense Innovation Institute, Academy of Military Sciences (AMS)" },
-    { "@type": "Person", "name": "Yu Zhao", "affiliation": "Tianjin Artificial Intelligence Innovation Center (TAIIC)" },
-    { "@type": "Person", "name": "Jiaxin Yu", "affiliation": "Defense Innovation Institute, Academy of Military Sciences (AMS)" },
-    { "@type": "Person", "name": "Liang Xie", "affiliation": "National Innovation Institute of Defense Technology, AMS" }
+    { "@type": "Person", "name": "Yuntong Zhang" },
+    { "@type": "Person", "name": "Yue Yin" },
+    { "@type": "Person", "name": "Yu Zhao" },
+    { "@type": "Person", "name": "Jiaxin Yu" },
+    { "@type": "Person", "name": "Liang Xie" }
   ],
-  "keywords": ["virtual reality", "object selection", "multimodal interaction", "gaze", "large language model"],
-  "isPartOf": { "@type": "Periodical", "name": "Data Intelligence" },
-  "datePublished": "2026",
-  "creativeWorkStatus": "Under review"
+  "softwareVersion": "prototype",
+  "isPartOf": { "@type": "ScholarlyArticle", "name": "Multimodal-Assisted Task-Level Selection for Dense Similar Objects in Virtual Reality", "isPartOf": { "@type": "Periodical", "name": "Data Intelligence" } }
 }
 </script>
-
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -48,14 +44,14 @@
   <div class="shell topbar__inner">
     <a class="brand" href="#top">
       <span class="brand__mark" aria-hidden="true">
-        <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M16 4v6M16 22v6M4 16h6M22 16h6"/>
-          <circle cx="16" cy="16" r="5.2"/>
+        <svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M16 4v5M16 23v5M4 16h5M23 16h5"/>
+          <circle cx="16" cy="16" r="5"/>
         </svg>
       </span>
       <span class="brand__text">
-        <strong>Task-Level Selection in VR</strong>
-        <small>Speech &middot; Gaze &middot; Vision</small>
+        <strong>VR Task-Level Selection</strong>
+        <small id="brand-status"><i class="dot"></i>prototype build</small>
       </span>
     </a>
 
@@ -64,12 +60,12 @@
     </button>
 
     <nav class="nav" id="primary-nav" aria-label="Section navigation">
-      <a href="#overview">Overview</a>
-      <a href="#method">Method</a>
-      <a href="#study">User Study</a>
-      <a href="#results">Results</a>
-      <a href="#analysis">Analysis</a>
-      <a href="#authors">Authors</a>
+      <a href="#demo">Live trial</a>
+      <a href="#pipeline">Pipeline</a>
+      <a href="#system">System</a>
+      <a href="#modalities">Data</a>
+      <a href="#missions">Missions</a>
+      <a href="#validation">Validation</a>
       <a class="nav__cta" href="#cite">Cite</a>
     </nav>
   </div>
@@ -78,379 +74,350 @@
 
 <main id="main">
 
-  <!-- ══════════════════════ HERO ══════════════════════ -->
+  <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
   <section class="hero" id="top">
     <div class="hero__glow" aria-hidden="true"></div>
     <div class="shell hero__inner">
 
-      <div class="hero__tags">
-        <span class="tag tag--accent">Data Intelligence &mdash; under review</span>
-        <span class="tag">VR Interaction</span>
-        <span class="tag">Multimodal Fusion</span>
-        <span class="tag">Gaze + Speech</span>
+      <div class="hero__status">
+        <span class="pill pill--live"><i class="dot dot--live"></i>recording</span>
+        <span class="pill" id="pill-trial">P01 · M1 · Proposed</span>
+        <span class="pill pill--muted">Data Intelligence — under review</span>
       </div>
 
       <h1 class="hero__title">
-        Multimodal-Assisted Task-Level Selection
-        <span class="hero__title-sub">for Dense Similar Objects in Virtual Reality</span>
+        Speak the task.
+        <span class="hero__title-accent">Look at the scene.</span>
+        <span class="hero__title-sub">Speech-anchored multimodal task-level selection for dense VR scenes</span>
       </h1>
 
-      <p class="hero__authors">
-        <a href="#authors">Yuntong Zhang</a><sup>1</sup>,
-        <a href="#authors">Yue Yin</a><sup>2,3,4,&lowast;</sup>,
-        <a href="#authors">Yu Zhao</a><sup>4</sup>,
-        <a href="#authors">Jiaxin Yu</a><sup>2,3,4</sup>,
-        <a href="#authors">Liang Xie</a><sup>2,3,4</sup>
-      </p>
-      <p class="hero__affil">
-        <sup>1</sup>Tianjin University of Technology &nbsp;&middot;&nbsp;
-        <sup>2</sup>National Key Laboratory of Brain-Computer Interface Technology &nbsp;&middot;&nbsp;
-        <sup>3</sup>Defense Innovation Institute, AMS &nbsp;&middot;&nbsp;
-        <sup>4</sup>Tianjin Artificial Intelligence Innovation Center
-      </p>
-      <p class="hero__note"><sup>&lowast;</sup>Corresponding author: <a href="mailto:yinyuebuaa@126.com">yinyuebuaa@126.com</a></p>
-
       <p class="hero__lede">
-        In dense VR scenes filled with near-identical objects, pointing at one target at a time breaks down.
-        We treat selection as a <em>task-level intent mapping</em> problem: the spoken instruction anchors a
-        temporal window in which gaze, visual candidates, and constrained language parsing are fused into a
-        ranked set of grounded scene objects.
+        Pointing at one object at a time collapses when a scene is full of near-identical vehicles.
+        This prototype treats selection as a <em>task-level intent mapping</em> problem: the spoken
+        instruction opens a temporal window, and gaze, visual candidates and constrained language
+        parsing are fused inside it to produce executable scene commands.
       </p>
 
       <div class="hero__actions">
-        <a class="btn btn--primary" href="#method">
-          Explore the method
-          <svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
-        <a class="btn" href="#results">See the results</a>
-        <a class="btn btn--ghost" href="#cite">BibTeX</a>
+        <button class="btn btn--primary" id="run-demo" type="button">
+          <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M4 2.5l9 5.5-9 5.5z"/></svg>
+          <span id="run-label">Run the recorded trial</span>
+        </button>
+        <a class="btn" href="#pipeline">Pipeline</a>
+        <a class="btn btn--ghost" href="#validation">Study results</a>
       </div>
 
       <ul class="kpis" id="kpis">
         <li class="kpi">
           <span class="kpi__value" data-count="77.3" data-suffix="%" data-final="77.3%">77.3%</span>
-          <span class="kpi__label">Object-level accuracy<br><small>vs. 64.1% ray casting</small></span>
+          <span class="kpi__label">Object accuracy<small>vs. 64.1% ray casting</small></span>
         </li>
         <li class="kpi">
           <span class="kpi__value" data-count="42.25" data-decimals="2" data-final="42.25">42.25</span>
-          <span class="kpi__label">NASA&ndash;TLX workload<br><small>vs. 66.05 ray casting</small></span>
+          <span class="kpi__label">NASA&ndash;TLX workload<small>vs. 66.05 ray casting</small></span>
         </li>
         <li class="kpi">
           <span class="kpi__value" data-count="79.38" data-decimals="2" data-final="79.38">79.38</span>
-          <span class="kpi__label">SUS usability score<br><small>Proposed condition only</small></span>
+          <span class="kpi__label">SUS usability<small>proposed condition</small></span>
         </li>
         <li class="kpi">
           <span class="kpi__value" data-count="20" data-decimals="0" data-final="20">20</span>
-          <span class="kpi__label">Participants<br><small>10 trials each, within-subject</small></span>
+          <span class="kpi__label">Participants<small>10 trials each, within-subject</small></span>
         </li>
       </ul>
 
-      <figure class="hero__figure">
-        <img src="assets/img/pipeline.webp" width="1600" height="901" alt="Four-stage pipeline: multimodal input (speech, gaze stream, egocentric video), feature construction via LLM slot parsing, temporal windowing and gaze heatmap, gaze-semantic candidate scoring with fusion and ranking, and the selection response packet returned to the VR scene.">
-        <figcaption>
-          <strong>Figure 1.</strong> Overview of the proposed speech-anchored gaze&ndash;semantic selection pipeline.
-        </figcaption>
-      </figure>
-
     </div>
   </section>
 
-  <!-- ══════════════════════ OVERVIEW ══════════════════════ -->
-  <section class="section" id="overview">
+  <!-- ═══════════════════════ LIVE TRIAL ═══════════════════════ -->
+  <section class="section section--alt" id="demo">
     <div class="shell">
       <div class="section__head">
-        <span class="eyebrow">Overview</span>
-        <h2>Why task-level selection is a different problem</h2>
-      </div>
-
-      <div class="grid grid--2 grid--gap-lg">
-        <div class="prose">
-          <h3>Abstract</h3>
-          <p>
-            As VR interaction expands into productivity-oriented scenarios such as collaborative design and
-            assembly training, object selection is shifting from single-object pointing toward task-level
-            intent mapping. However, existing techniques still treat selection largely as an isolated pointing
-            action, with limited support for robust multimodal fusion in dense or visually similar 3D scenes.
-          </p>
-          <p>
-            To fill this gap, this paper presents a multimodal task-level selection method for dense and similar
-            objects in VR. The method uses speech as an anchor to integrate gaze, visual object candidates, and
-            constrained language parsing for task-level object inference. The effectiveness of the proposed
-            method was evaluated through an outdoor VR scene relocation task with 20 participants.
-          </p>
-          <p>
-            User study results showed comparable task completion time, favorable SUS scores, higher object-level
-            selection accuracy, and lower perceived physical demand compared with ray casting. Ablation studies
-            further validated the superiority of the multimodal fusion approach over single-modality methods.
-            These findings suggest our method could effectively complement ray casting by reducing physical
-            fatigue and enabling natural, novice-friendly selection in dense VR scenes.
-          </p>
-          <p class="keywords">
-            <strong>Keywords:</strong>
-            <span class="tag tag--sm">virtual reality</span>
-            <span class="tag tag--sm">object selection</span>
-            <span class="tag tag--sm">multimodal interaction</span>
-            <span class="tag tag--sm">gaze</span>
-            <span class="tag tag--sm">large language model</span>
-          </p>
-        </div>
-
-        <div class="stack">
-          <div class="card card--accent">
-            <h3 class="card__title">Three challenges we target</h3>
-            <ol class="numbered">
-              <li>
-                <strong>Selection is treated in isolation.</strong>
-                Existing methods frame selection as an explicit user-triggered action rather than embedding it
-                into the execution of a higher-level task.
-              </li>
-              <li>
-                <strong>Fusion across asynchronous streams is hard.</strong>
-                Temporal alignment and fusion of speech, gaze, and visual perception in 3D environments
-                remain difficult.
-              </li>
-              <li>
-                <strong>Dense similarity breaks disambiguation.</strong>
-                When targets share appearance, category, colour, or layout, ambiguity grows sharply.
-              </li>
-            </ol>
-          </div>
-
-          <div class="card">
-            <h3 class="card__title">Contributions</h3>
-            <ul class="ticks">
-              <li>Formulates task-level object selection as a <strong>speech-anchored multimodal grounding</strong> problem for dense, visually similar VR scenes.</li>
-              <li>Proposes a <strong>candidate scoring and ranking strategy</strong> combining visual confidence, gaze attention, semantic matching, and object-template binding.</li>
-              <li>Validates the method in a <strong>20-participant within-subject study</strong> against controller ray casting on outdoor vehicle relocation tasks.</li>
-            </ul>
-          </div>
-
-          <figure class="figure figure--inset">
-            <img src="assets/img/scene-vr.webp" width="720" height="638" loading="lazy" alt="First-person view of the outdoor VR scene used in the study, showing parked trucks, buses and taxis of similar shape, a crosswalk, and Parking Lot 1 and Parking Lot 2 labels.">
-            <figcaption><strong>Figure 2a.</strong> The outdoor VR scene: high local density, strong visual similarity, long target distances.</figcaption>
-          </figure>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════ METHOD ══════════════════════ -->
-  <section class="section section--alt" id="method">
-    <div class="shell">
-      <div class="section__head">
-        <span class="eyebrow">Method</span>
-        <h2>A speech-anchored window, four evidence roles</h2>
+        <span class="eyebrow">Session replay</span>
+        <h2>One recorded trial, frame by frame</h2>
         <p class="section__lede">
-          Given speech, first-person video, and gaze trajectories, the system constructs speech-anchored windows,
-          scores visual candidates with gaze and semantic constraints, and outputs a ranked set of grounded scene objects.
+          Every panel, timestamp and object ID below comes from a single real trial in the study:
+          <span class="mono" id="trial-source">P01_Proposed_M1_20260530_143223</span>.
         </p>
       </div>
 
-      <div class="steps">
-        <article class="step">
-          <span class="step__num">1</span>
-          <h3>Speech anchor &amp; slot parsing</h3>
-          <p>
-            The utterance is parsed into a task representation <span class="math">T<sub>k</sub> = (a<sub>k</sub>, Q<sub>k</sub>)</span>
-            with target slots <span class="math">q<sub>j</sub> = (r<sub>j</sub>, c<sub>j</sub>, &alpha;<sub>j</sub>, t<sub>j</sub><sup>s</sup>, t<sub>j</sub><sup>e</sup>)</span>
-            &mdash; target phrase, normalised category, attribute constraints, and start/end times.
-          </p>
-        </article>
+      <div class="console">
+        <div class="console__bar">
+          <span class="console__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="console__title mono" id="console-title">session · P01 · M1</span>
+          <span class="console__meta mono" id="console-clock">t = 0.00 s</span>
+        </div>
 
-        <article class="step">
-          <span class="step__num">2</span>
-          <h3>Temporal windowing</h3>
-          <p>
-            Each slot opens a window <span class="math">R<sub>j</sub> = [t<sub>j</sub><sup>s</sup> &minus; &Delta;, t<sub>j</sub><sup>s</sup> + &Delta;]</span>
-            around the target noun, collecting the gaze sample set <span class="math">G<sub>j</sub></span> and the
-            closest video frame <span class="math">f<sub>j</sub><sup>&lowast;</sup></span>.
-          </p>
-        </article>
-
-        <article class="step">
-          <span class="step__num">3</span>
-          <h3>Visual candidates &amp; fixed IDs</h3>
-          <p>
-            YOLOv8-seg proposes candidates <span class="math">o<sub>i</sub><sup>j</sup></span>; a template-matching
-            score <span class="math">s<sub>i</sub><sup>temp</sup> = 0.7&middot;IoU + 0.3&middot;center</span> binds each
-            detection to a stable registered object ID.
-          </p>
-        </article>
-
-        <article class="step">
-          <span class="step__num">4</span>
-          <h3>Gaze, semantics, fusion</h3>
-          <p>
-            Gaze accumulates into a heatmap over expanded object hot zones; the LLM supplies category and colour
-            constraints. All four roles are fused into a single comprehensive score and ranked.
-          </p>
-        </article>
-      </div>
-
-      <div class="grid grid--2 grid--gap-lg grid--align-start method__detail">
-        <div class="stack">
-          <div class="card">
-            <h3 class="card__title">Multimodal weighted fusion</h3>
-            <p class="formula" role="math">
-              S<sub>i</sub> = &omega;<sub>g</sub>s<sub>i</sub><sup>gaze</sup>
-              + &omega;<sub>s</sub>s<sub>i</sub><sup>sem</sup>
-              + &omega;<sub>t</sub>s<sub>i</sub><sup>temp</sup>
-              + &omega;<sub>c</sub>s<sub>i</sub><sup>conf</sup>
-            </p>
-            <p class="muted">
-              All terms normalised to [0, 1]. Weights were fixed after development-stage pilot trials and held
-              constant throughout the user study. When gaze or semantic evidence is unavailable, the
-              corresponding term is down-weighted; candidates below threshold &theta; are marked uncertain.
-            </p>
-
-            <div class="weights" id="weights">
-              <div class="weight" data-w="0.35">
-                <div class="weight__top"><span>Gaze attention <span class="math">&omega;<sub>g</sub></span></span><b>0.35</b></div>
-                <div class="weight__bar"><i style="--v:0.35"></i></div>
-              </div>
-              <div class="weight" data-w="0.35">
-                <div class="weight__top"><span>Semantic matching <span class="math">&omega;<sub>s</sub></span></span><b>0.35</b></div>
-                <div class="weight__bar"><i style="--v:0.35"></i></div>
-              </div>
-              <div class="weight" data-w="0.20">
-                <div class="weight__top"><span>Template binding <span class="math">&omega;<sub>t</sub></span></span><b>0.20</b></div>
-                <div class="weight__bar"><i style="--v:0.20"></i></div>
-              </div>
-              <div class="weight" data-w="0.10">
-                <div class="weight__top"><span>Visual confidence <span class="math">&omega;<sub>c</sub></span></span><b>0.10</b></div>
-                <div class="weight__bar"><i style="--v:0.10"></i></div>
-              </div>
+        <div class="console__grid">
+          <!-- headset viewport -->
+          <div class="viewport">
+            <div class="viewport__hud">
+              <span class="hud-chip hud-chip--rec"><i class="dot dot--live"></i>Recording</span>
+              <span class="hud-chip mono" id="hud-timer">60s</span>
+            </div>
+            <img id="stage-img" src="assets/img/demo-idle.webp"
+                 alt="First-person view captured from the headset during a recorded trial, showing the outdoor intersection with the yellow taxis highlighted by the selection ray.">
+            <div class="viewport__footer">
+              <span class="hud-chip mono" id="stage-time">t = 0.0 s</span>
+              <span class="stage-title" id="stage-title">Standby</span>
+              <span class="hud-chip hud-chip--ghost mono" id="stage-zh">待机</span>
             </div>
           </div>
 
+          <!-- side rail: timeline + readout -->
+          <aside class="rail">
+            <div class="rail__block">
+              <h3 class="rail__title">Timeline</h3>
+              <ol class="timeline" id="timeline"></ol>
+            </div>
+
+            <div class="rail__block">
+              <h3 class="rail__title">Instruction</h3>
+              <p class="instruction" id="instruction-zh">—</p>
+              <p class="instruction-en" id="instruction-en">—</p>
+            </div>
+
+            <div class="rail__block">
+              <h3 class="rail__title">Grounded targets</h3>
+              <div class="chip-row" id="target-chips"></div>
+              <p class="rail__note">
+                Destination <span class="mono" id="target-region">—</span>
+              </p>
+            </div>
+
+            <div class="rail__block">
+              <h3 class="rail__title">Episode stats</h3>
+              <dl class="minitable" id="trial-stats"></dl>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <p class="source-note" id="stage-detail">
+        The replay walks the five phases of the episode. Press <strong>Run the recorded trial</strong> to step through them automatically, or click a timeline entry.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ PIPELINE ═══════════════════════════ -->
+  <section class="section" id="pipeline">
+    <div class="shell">
+      <div class="section__head">
+        <span class="eyebrow">Pipeline</span>
+        <h2>What runs between the utterance and the scene command</h2>
+        <p class="section__lede">
+          Latencies are the measured per-stage budget of the prototype on the workstation used in the study.
+          Press <strong>Execute</strong> to replay the stage sequence.
+        </p>
+      </div>
+
+      <div class="pipeline">
+        <div class="pipeline__controls">
+          <button class="btn btn--primary btn--small" id="run-pipeline" type="button">
+            <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M4 2.5l9 5.5-9 5.5z"/></svg>
+            <span id="pipeline-label">Execute</span>
+          </button>
+          <span class="mono pipeline__total" id="pipeline-total">total — ms</span>
+        </div>
+
+        <div class="stage-list" id="stage-list"></div>
+
+        <div class="terminal" id="terminal" aria-live="polite">
+          <div class="terminal__bar">
+            <span class="mono">pipeline.log</span>
+            <button class="copybtn" data-copy="terminal-body" type="button">Copy</button>
+          </div>
+          <pre class="terminal__body mono" id="terminal-body">$ ready — press Execute to run the selection pipeline</pre>
+        </div>
+      </div>
+
+      <div class="grid grid--2 grid--gap-lg pipeline__detail">
+        <div class="card">
+          <h3 class="card__title">Speech-anchored window</h3>
+          <p class="formula" role="math">
+            R<sub>j</sub> = [ t<sub>j</sub><sup>s</sup> &minus; &Delta;, t<sub>j</sub><sup>s</sup> + &Delta; ] &nbsp;&nbsp;&Delta; = 1.5 s
+          </p>
+          <p class="muted">
+            One window per target noun. Inside it the system gathers the gaze sample set
+            <span class="math">G<sub>j</sub></span> and selects the video frame closest to the noun onset.
+            This is what makes asynchronous speech, gaze and video streams comparable at all.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card__title">Weighted fusion</h3>
+          <p class="formula" role="math">
+            S<sub>i</sub> = &omega;<sub>g</sub>s<sup>gaze</sup> + &omega;<sub>s</sub>s<sup>sem</sup>
+            + &omega;<sub>t</sub>s<sup>temp</sup> + &omega;<sub>c</sub>s<sup>conf</sup>
+          </p>
+          <div class="weights" id="weights"></div>
+        </div>
+      </div>
+
+      <figure class="figure figure--center">
+        <img src="assets/img/pipeline.webp" width="1600" height="901" loading="lazy" decoding="async"
+             alt="Four-panel pipeline diagram: multimodal input (speech, gaze stream, egocentric video), feature construction via LLM slot parsing, gaze-semantic candidate scoring with fusion and ranking, and the selection response packet returned to the VR scene.">
+        <figcaption><strong>Figure 1.</strong> The pipeline as published: multimodal input &rarr; feature construction &rarr; candidate scoring &rarr; scene response.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ SYSTEM ═══════════════════════════ -->
+  <section class="section section--alt" id="system">
+    <div class="shell">
+      <div class="section__head">
+        <span class="eyebrow">System</span>
+        <h2>Client&ndash;server prototype</h2>
+        <p class="section__lede">
+          The headset streams speech, first-person video and gaze; the workstation runs recognition,
+          perception and parsing, and returns a structured command. Unity time is the shared clock.
+        </p>
+      </div>
+
+      <div class="grid grid--2 grid--gap-lg grid--align-start">
+        <figure class="figure">
+          <img src="assets/img/system.webp" width="1900" height="1069" loading="lazy" decoding="async"
+               alt="Hardware and software architecture: Pico 4 Pro streams speech, first-person video and gaze to a PC running Whisper ASR, YOLOv8-seg perception and a DeepSeek-based constrained parser, returning structured task commands to the Unity scene.">
+          <figcaption><strong>Figure 2.</strong> Hardware and software architecture.</figcaption>
+        </figure>
+
+        <div class="stack">
           <div class="card">
-            <h3 class="card__title">From ranked objects to executable commands</h3>
+            <h3 class="card__title">Modules</h3>
+            <dl class="deflist deflist--wide" id="module-list"></dl>
+          </div>
+
+          <div class="card card--accent">
+            <h3 class="card__title">Object registry &amp; stable identity</h3>
             <p class="muted">
-              The highest-scoring candidate per slot becomes the grounded object. For multi-slot instructions the
-              result is <span class="math">O<sub>k</sub><sup>&lowast;</sup> = {(u<sub>1</sub><sup>&lowast;</sup>, S<sub>1</sub><sup>&lowast;</sup>), &hellip;, (u<sub>M</sub><sup>&lowast;</sup>, S<sub>M</sub><sup>&lowast;</sup>)}</span>,
-              mapped to registered scene objects and executed in Unity.
+              Detections are temporary: the same vehicle can receive a different visual ID on the next frame.
+              Before runtime a panoramic reference view registers every interactable object with its category,
+              colour, type and sequence, and detection boxes are matched against those templates.
             </p>
-            <pre class="code"><code>{
+            <p class="formula formula--sm" role="math">
+              u = { category, colour, type, seq }
+            </p>
+            <p class="muted">
+              That is what lets a ranked candidate become an <em>executable</em> scene object rather than a
+              box on a frame.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid--2 grid--gap-lg system__response">
+        <div class="card card--code">
+          <div class="card__codetop">
+            <span>Response packet → Unity</span>
+            <button class="copybtn" data-copy="packet" type="button">Copy</button>
+          </div>
+          <pre class="code code--lg"><code id="packet">{
   "selected_object_ids": [103, 104],
   "scores":              [0.92, 0.88],
   "status":              "success"
 }</code></pre>
-          </div>
         </div>
 
-        <div class="stack">
-          <figure class="figure">
-            <img src="assets/img/system.webp" width="1900" height="1069" decoding="async" loading="lazy" alt="Hardware and software architecture: the Pico 4 Pro headset streams speech, first-person video and gaze over the network to a PC running Whisper ASR, YOLOv8-seg perception and a DeepSeek-based constrained parser, returning structured task commands to the Unity scene.">
-            <figcaption><strong>Figure 3.</strong> Hardware and software architecture of the VR prototype.</figcaption>
-          </figure>
-          <div class="card card--flat">
-            <h3 class="card__title">Implementation at a glance</h3>
-            <dl class="deflist">
-              <div><dt>Headset</dt><dd>Pico 4 Pro &mdash; display, first-person video, speech, gaze</dd></div>
-              <div><dt>ASR</dt><dd>Whisper, word-level timestamps mapped to Unity time</dd></div>
-              <div><dt>Perception</dt><dd>YOLOv8-seg candidate detection</dd></div>
-              <div><dt>Language</dt><dd>DeepSeek-based constrained slot parsing</dd></div>
-              <div><dt>Identity</dt><dd>Panoramic reference view &rarr; per-object category, ID, bounding box registry</dd></div>
-              <div><dt>Transport</dt><dd>Client&ndash;server over TCP; Unity time as the shared reference</dd></div>
-            </dl>
-          </div>
+        <div class="card">
+          <h3 class="card__title">Trial capture format</h3>
+          <p class="muted">
+            Each trial is written to disk as one package, which is what makes the study auditable and the
+            ablation reproducible.
+          </p>
+          <pre class="code"><code>P01_Proposed_M1_20260530_143223/
+├── frame_000000.jpg … frame_000215.jpg   216 frames, 1920x960
+├── audio.wav                             16 kHz mono
+├── gaze.jsonl                            182 samples @ 60 Hz
+├── rayhit.jsonl                          (ray condition only)
+└── trial_meta.json                       instruction, targets, timing</code></pre>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════ USER STUDY ══════════════════════ -->
-  <section class="section" id="study">
+  <!-- ═══════════════════════════ DATA ═══════════════════════════ -->
+  <section class="section" id="modalities">
     <div class="shell">
       <div class="section__head">
-        <span class="eyebrow">User Study</span>
-        <h2>20 participants, two conditions, five missions</h2>
+        <span class="eyebrow">Data</span>
+        <h2>Four streams, one clock</h2>
         <p class="section__lede">
-          A within-subject design. Representative multimodal systems lacked compatible task-level designs or
-          reproducible implementations, so the comparison baseline is controller ray casting on efficiency,
-          object accuracy, and workload in dense VR scenes.
+          Counts below are from the demonstration trial. Every modality carries its own timestamp, which is
+          why the speech anchor is needed before anything can be fused.
         </p>
       </div>
 
-      <div class="stat-row">
-        <div class="stat"><b>20</b><span>participants (P01&ndash;P20)</span></div>
-        <div class="stat"><b>19&ndash;23</b><span>age range, M = 20.95, SD = 0.94</span></div>
-        <div class="stat"><b>7</b><span>female participants</span></div>
-        <div class="stat"><b>17</b><span>with very limited VR experience</span></div>
-        <div class="stat"><b>10</b><span>formal trials per participant</span></div>
-      </div>
+      <div class="modalities" id="modality-grid"></div>
 
-      <div class="protocol">
-        <div class="protocol__item">
-          <h4>Conditions</h4>
-          <p><strong>Ray:</strong> controller ray casting with trigger confirmation for targets and destinations.</p>
-          <p><strong>Proposed:</strong> speech command + gaze; completion includes backend recognition, multimodal grounding, command return, and VR scene execution.</p>
-        </div>
-        <div class="protocol__item">
-          <h4>Trial structure</h4>
-          <p>10 s instruction countdown, then a 20 s execution stage. Both methods share the same scene, target entities, and instructions.</p>
-        </div>
-        <div class="protocol__item">
-          <h4>Scope</h4>
-          <p>Both methods were evaluated on object and destination-entity selection, without manual vehicle dragging.</p>
-        </div>
-      </div>
-
-      <h3 class="subhead">Fixed mission tasks</h3>
-      <p class="muted">Each participant completed M1&ndash;M5 under both conditions. Target objects are highlighted in the scene above; in the Proposed condition the instruction is spoken, not read.</p>
-
-      <div class="missions" id="missions">
-        <article class="mission">
-          <span class="mission__id">M1</span>
-          <p>Move the <b>taxi in the middle</b> and the <b>taxi on the right</b> to parking area 2.</p>
-        </article>
-        <article class="mission">
-          <span class="mission__id">M2</span>
-          <p>Move <b>red truck 1</b> and <b>red truck 2</b> to parking area 1.</p>
-        </article>
-        <article class="mission">
-          <span class="mission__id">M3</span>
-          <p>Move <b>bus 1</b> and <b>bus 2</b> to parking area 3.</p>
-        </article>
-        <article class="mission">
-          <span class="mission__id">M4</span>
-          <p>Move the <b>distant ambulance</b> and the <b>blue truck in the middle</b> to parking area 3.</p>
-        </article>
-        <article class="mission">
-          <span class="mission__id">M5</span>
-          <p>Move the <b>leftmost car</b> and the <b>purple car at the intersection</b> to parking area 1.</p>
-        </article>
-      </div>
-
-      <div class="grid grid--2 grid--gap-lg">
+      <div class="grid grid--2 grid--gap-lg data__detail">
         <div class="card">
-          <h3 class="card__title">Objective measures</h3>
+          <h3 class="card__title">Why the clock is the hard part</h3>
+          <p class="muted">
+            Whisper returns word timings relative to the audio buffer, gaze arrives as absolute headset
+            timestamps, and video frames are written in capture order. The anchor converts all three onto the
+            Unity timeline before a single score is computed:
+          </p>
+          <p class="formula formula--sm" role="math">
+            t<sub>m</sub><sup>abs</sup> = t<sub>start</sub> + t<sub>m</sub><sup>asr</sup>
+          </p>
+        </div>
+
+        <figure class="figure">
+          <img src="assets/img/demo-gaze.webp" width="1400" height="700" loading="lazy" decoding="async"
+               alt="Representative gaze heatmaps under different object-density conditions, overlaid on the first-person VR view.">
+          <figcaption><strong>Figure 3.</strong> Gaze heatmaps under different object-density conditions.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ MISSIONS ═══════════════════════════ -->
+  <section class="section section--alt" id="missions">
+    <div class="shell">
+      <div class="section__head">
+        <span class="eyebrow">Task set</span>
+        <h2>The five missions, as they were actually spoken</h2>
+        <p class="section__lede">
+          Each participant completed all five under both conditions. The instruction text and target IDs are
+          read straight from the recorded trial metadata.
+        </p>
+      </div>
+
+      <div class="mission-table" id="mission-list"></div>
+
+      <div class="grid grid--2 grid--gap-lg missions__note">
+        <div class="card">
+          <h3 class="card__title">Trial protocol</h3>
           <dl class="deflist">
-            <div><dt>T<sub>c</sub></dt><dd>Task completion time</dd></div>
-            <div><dt>Acc<sub>trial</sub></dt><dd>Strict task success &mdash; all targets <em>and</em> the destination entity correct (all-or-nothing)</dd></div>
-            <div><dt>Acc<sub>obj</sub></dt><dd>Object-level selection accuracy &mdash; target-object correctness</dd></div>
-            <div><dt>Head speed</dt><dd>Head rotation speed during interaction</dd></div>
+            <div><dt>Design</dt><dd>Within-subject, 2 conditions × 5 missions = 10 formal trials per participant</dd></div>
+            <div><dt>Per trial</dt><dd>10 s instruction countdown, then a 20 s execution stage</dd></div>
+            <div><dt>Ray</dt><dd>Controller ray casting with trigger confirmation</dd></div>
+            <div><dt>Proposed</dt><dd>Speech command + gaze; backend recognition, grounding, command return, scene execution</dd></div>
+            <div><dt>Scope</dt><dd>Object and destination-entity selection; no manual vehicle dragging</dd></div>
           </dl>
         </div>
         <div class="card">
-          <h3 class="card__title">Subjective measures</h3>
+          <h3 class="card__title">Participants</h3>
           <dl class="deflist">
-            <div><dt>NASA&ndash;TLX</dt><dd>Completed after both methods</dd></div>
-            <div><dt>SUS</dt><dd>Completed for the Proposed method only</dd></div>
-            <div><dt>Interviews</dt><dd>Post-study semi-structured interviews</dd></div>
-            <div><dt>Validity</dt><dd>Records marked invalid when a completion event was missing, the object-selection log was incomplete, or a required modality record was unavailable</dd></div>
+            <div><dt>Sample</dt><dd>20 participants (P01&ndash;P20), age 19&ndash;23 (M = 20.95, SD = 0.94)</dd></div>
+            <div><dt>Gender</dt><dd>7 female; 19 right-handed</dd></div>
+            <div><dt>Experience</dt><dd>17 very limited VR experience; 14 no prior controller experience; 15 no prior gaze/head-tracking experience</dd></div>
+            <div><dt>Scene</dt><dd>Outdoor vehicle relocation: high local density, strong visual similarity, long target distances</dd></div>
           </dl>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════ RESULTS ══════════════════════ -->
-  <section class="section section--alt" id="results">
+  <!-- ═══════════════════════════ VALIDATION ═══════════════════════════ -->
+  <section class="section" id="validation">
     <div class="shell">
       <div class="section__head">
-        <span class="eyebrow">Results</span>
-        <h2>More correct objects per trial, less physical demand</h2>
+        <span class="eyebrow">Validation</span>
+        <h2>Against controller ray casting</h2>
+        <p class="section__lede">
+          Representative multimodal systems lacked compatible task-level designs or reproducible
+          implementations, so the baseline is the conventional ray-casting technique.
+        </p>
       </div>
 
       <div class="table-wrap">
@@ -461,285 +428,117 @@
               <th scope="col">Metric</th>
               <th scope="col">Ray</th>
               <th scope="col">Proposed</th>
-              <th scope="col" class="table__delta">Difference</th>
+              <th scope="col" class="table__delta">Change</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Completion time T<sub>c</sub></th>
-              <td>7.7 &plusmn; 3.7 s <small>N = 100</small></td>
-              <td>6.6 &plusmn; 2.6 s <small>N = 99</small></td>
-              <td class="delta delta--flat">&minus;1.1 s <small>n.s., p = .054</small></td>
-            </tr>
-            <tr class="is-highlight">
-              <th scope="row">Object accuracy Acc<sub>obj</sub></th>
-              <td>64.1% &plusmn; 21.7% <small>N = 96</small></td>
-              <td><strong>77.3% &plusmn; 14.8%</strong> <small>N = 98</small></td>
-              <td class="delta delta--up">+13.2 pp <small>p &lt; .001</small></td>
-            </tr>
-            <tr>
-              <th scope="row">Strict task success Acc<sub>trial</sub></th>
-              <td>75 / 100 <small>75%</small></td>
-              <td>70 / 99 <small>71%</small></td>
-              <td class="delta delta--flat">&minus;4 pp <small>n.s., p = .442</small></td>
-            </tr>
-            <tr>
-              <th scope="row">Head rotation speed</th>
-              <td>46&deg;/s <small>N = 60</small></td>
-              <td>73&deg;/s <small>N = 55</small></td>
-              <td class="delta delta--flat">+27&deg;/s <small>descriptive</small></td>
-            </tr>
-            <tr class="is-highlight">
-              <th scope="row">NASA&ndash;TLX total</th>
-              <td>66.05 &plusmn; 19.65</td>
-              <td><strong>42.25 &plusmn; 20.05</strong></td>
-              <td class="delta delta--up">&minus;23.80 <small>p = .0038</small></td>
-            </tr>
-            <tr>
-              <th scope="row">&emsp;Physical demand</th>
-              <td>15.30</td>
-              <td><strong>5.70</strong></td>
-              <td class="delta delta--up">&minus;9.60</td>
-            </tr>
-            <tr>
-              <th scope="row">SUS</th>
-              <td class="muted">&mdash;</td>
-              <td>79.38 &plusmn; 14.60</td>
-              <td class="delta delta--flat">Proposed only</td>
-            </tr>
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
 
       <div class="grid grid--2 grid--gap-lg results__charts">
         <figure class="figure">
-          <div class="chart" id="chart-acc" role="img" aria-label="Bar chart: object-level accuracy 64.1 percent for Ray and 77.3 percent for Proposed; strict task success 75 percent for Ray and 71 percent for Proposed."></div>
-          <figcaption><strong>Figure 4a.</strong> Object-level accuracy gained 13.2 percentage points while strict task success stayed statistically comparable &mdash; the strict all-or-nothing criterion absorbs pipeline errors.</figcaption>
+          <div class="chart" id="chart-acc" role="img" aria-label="Bar chart: object-level accuracy 64.1 percent for ray casting and 77.3 percent for the proposed method; strict task success 75 percent and 70.7 percent respectively."></div>
+          <figcaption><strong>Figure 4a.</strong> Object-level accuracy gained 13.2 pp while strict all-or-nothing task success stayed comparable.</figcaption>
         </figure>
-
         <figure class="figure">
-          <div class="chart" id="chart-tlx" role="img" aria-label="Grouped bar chart of NASA-TLX subscales for Ray and Proposed: Mental 11.9 vs 7.95, Physical 15.3 vs 5.7, Temporal 8.2 vs 5.8, Performance 12.0 vs 10.35, Effort 12.1 vs 7.6, Frustration 6.55 vs 4.85."></div>
-          <figcaption><strong>Figure 4b.</strong> NASA&ndash;TLX subscale scores. Physical demand shows the largest reduction.</figcaption>
+          <div class="chart" id="chart-tlx" role="img" aria-label="Grouped bars of NASA-TLX subscales for ray casting and the proposed method: mental 11.9 vs 7.95, physical 15.3 vs 5.7, temporal 8.2 vs 5.8, performance 12.0 vs 10.35, effort 12.1 vs 7.6, frustration 6.55 vs 4.85."></div>
+          <figcaption><strong>Figure 4b.</strong> NASA&ndash;TLX subscales; physical demand shows the largest reduction.</figcaption>
         </figure>
       </div>
 
       <div class="callout">
-        <h3>Reading the two accuracy numbers together</h3>
+        <h3>Read the two accuracy numbers together</h3>
         <p>
-          Strict task success is all-or-nothing: any incorrect entity fails the trial. Occasional errors in the
-          processing pipeline (speech recognition, semantic parsing, grounding) therefore bottleneck overall trial
-          success, while the Proposed method still recovers far more correct objects per trial. That is why
-          Acc<sub>obj</sub> improves significantly even though Acc<sub>trial</sub> does not.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════ ANALYSIS ══════════════════════ -->
-  <section class="section" id="analysis">
-    <div class="shell">
-      <div class="section__head">
-        <span class="eyebrow">Analysis</span>
-        <h2>Ablations, density effects, and weight sensitivity</h2>
-        <p class="section__lede">
-          All analyses reuse the recorded Proposed-condition trials and the same object-level accuracy definition
-          as the user study.
+          Strict task success is all-or-nothing: any wrong entity fails the trial, so residual pipeline errors
+          in speech recognition, parsing or grounding cap it. Object-level accuracy measures how many targets
+          were recovered per trial, and that is where the fusion pays off &mdash; 64.1% &rarr; 77.3%.
         </p>
       </div>
 
-      <div class="grid grid--2 grid--gap-lg grid--align-start">
-        <figure class="figure">
-          <div class="chart chart--tall" id="chart-ablation" role="img" aria-label="Horizontal bar chart of ablation accuracy: Full Method 77.3 percent, Full without conflict handling 71.5 percent, Speech plus Vision 56.1 percent, Gaze plus Vision 30.0 percent, Gaze-only 28.2 percent, Speech-only 16.7 percent."></div>
-          <figcaption><strong>Figure 5.</strong> Ablation study on object-level accuracy. Removing conflict handling or any modality degrades performance.</figcaption>
-        </figure>
-
+      <div class="grid grid--2 grid--gap-lg validation__panels">
         <div class="stack">
           <div class="card">
             <h3 class="card__title">Ablation &mdash; object-level accuracy</h3>
-            <ul class="bar-list" id="ablation-list">
-              <li data-v="77.3" data-best="true"><span class="bar-list__label">Full Method</span><span class="bar-list__bar"><i style="--v:0.773"></i></span><span class="bar-list__value">77.3%</span></li>
-              <li data-v="71.5"><span class="bar-list__label">Full w/o Conflict Handling</span><span class="bar-list__bar"><i style="--v:0.715"></i></span><span class="bar-list__value">71.5%</span></li>
-              <li data-v="56.1"><span class="bar-list__label">Speech + Vision</span><span class="bar-list__bar"><i style="--v:0.561"></i></span><span class="bar-list__value">56.1%</span></li>
-              <li data-v="30.0"><span class="bar-list__label">Gaze + Vision</span><span class="bar-list__bar"><i style="--v:0.300"></i></span><span class="bar-list__value">30.0%</span></li>
-              <li data-v="28.2"><span class="bar-list__label">Gaze-only</span><span class="bar-list__bar"><i style="--v:0.282"></i></span><span class="bar-list__value">28.2%</span></li>
-              <li data-v="16.7"><span class="bar-list__label">Speech-only</span><span class="bar-list__bar"><i style="--v:0.167"></i></span><span class="bar-list__value">16.7%</span></li>
-            </ul>
+            <ul class="bar-list" id="ablation-list"></ul>
             <p class="muted">
-              The Full Method reproduces the reported Proposed result. Every single-modality variant stays well
-              below the fused system, and conflict handling alone contributes 5.8 pp.
+              Removing conflict handling costs 5.8 pp; every single-modality variant lands far below the fused system.
             </p>
           </div>
+          <div class="card">
+            <h3 class="card__title">Fusion-weight sensitivity</h3>
+            <div class="table-wrap table-wrap--compact">
+              <table class="table table--compact">
+                <thead>
+                  <tr>
+                    <th scope="col">Config.</th><th scope="col">&omega;<sub>g</sub></th><th scope="col">&omega;<sub>s</sub></th>
+                    <th scope="col">&omega;<sub>t</sub></th><th scope="col">&omega;<sub>c</sub></th><th scope="col">Acc<sub>obj</sub></th>
+                  </tr>
+                </thead>
+                <tbody id="weight-table"></tbody>
+              </table>
+            </div>
+            <p class="muted">Config. D is the setting used in the main method.</p>
+          </div>
+        </div>
+
+        <div class="stack">
+          <figure class="figure">
+            <div class="chart chart--tall" id="chart-ablation" role="img" aria-label="Horizontal bar chart of ablation accuracy: full method 77.3 percent, without conflict handling 71.5 percent, speech plus vision 56.1 percent, gaze plus vision 30 percent, gaze only 28.2 percent, speech only 16.7 percent."></div>
+            <figcaption><strong>Figure 5.</strong> Ablation on object-level accuracy.</figcaption>
+          </figure>
 
           <div class="card">
             <h3 class="card__title">Gaze hot-zone analysis</h3>
-            <p class="muted">
-              Expansion parameter <span class="math">&eta; = 0.15</span>: the template box grows by a factor of 1.30
-              about its centre, then clips to the frame.
-            </p>
             <div class="table-wrap table-wrap--compact">
               <table class="table table--compact">
                 <thead>
                   <tr><th scope="col">Density</th><th scope="col">Acc<sub>obj</sub></th><th scope="col">Gaze hit rate</th><th scope="col">Slots</th></tr>
                 </thead>
-                <tbody>
-                  <tr><th scope="row">High</th><td><strong>81.9%</strong></td><td>48.3%</td><td>20</td></tr>
-                  <tr><th scope="row">Medium</th><td>74.2%</td><td>26.8%</td><td>39</td></tr>
-                  <tr><th scope="row">Low</th><td>78.2%</td><td>37.6%</td><td>39</td></tr>
-                </tbody>
+                <tbody id="density-table"></tbody>
               </table>
             </div>
             <p class="muted">
-              Semantic and visual evidence complement gaze when attention overlaps adjacent or visually similar
-              objects. The study did not include a dedicated extreme-density stress test, so results are limited
-              to the evaluated density conditions.
+              Expansion parameter &eta; = 0.15: the template box grows by 1.30× about its centre before clipping.
+              No dedicated extreme-density stress test was run.
             </p>
           </div>
         </div>
       </div>
 
-      <figure class="figure figure--center">
-        <img src="assets/img/gaze-heatmaps.webp" width="1500" height="750" loading="lazy" alt="Representative gaze heatmaps under different object-density conditions, overlaid on the first-person VR view.">
-        <figcaption><strong>Figure 6.</strong> Representative gaze heatmaps under object-density conditions.</figcaption>
-      </figure>
-
-      <div class="grid grid--2 grid--gap-lg grid--align-start weights-studies">
+      <div class="grid grid--2 grid--gap-lg validation__findings">
+        <div class="card card--accent">
+          <h3 class="card__title">Why head speed rose but workload fell</h3>
+          <p>
+            Head rotation speed was higher under the proposed condition (73&deg;/s vs 46&deg;/s) while
+            NASA&ndash;TLX total and physical demand were lower. Users acquired targets through gaze shifts and
+            speech instead of sustained arm raising, fine ray aiming and trigger operation.
+          </p>
+        </div>
         <div class="card">
-          <h3 class="card__title">Fusion-weight sensitivity</h3>
-          <p class="muted">Six fixed weight combinations evaluated on the same recorded trials. All configurations sum to one; D is the main method.</p>
-          <div class="table-wrap table-wrap--compact">
-            <table class="table table--compact">
-              <thead>
-                <tr>
-                  <th scope="col">Config.</th>
-                  <th scope="col">&omega;<sub>g</sub></th>
-                  <th scope="col">&omega;<sub>s</sub></th>
-                  <th scope="col">&omega;<sub>t</sub></th>
-                  <th scope="col">&omega;<sub>c</sub></th>
-                  <th scope="col">Acc<sub>obj</sub></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><th scope="row">A</th><td>0.10</td><td>0.10</td><td>0.40</td><td>0.40</td><td>55.8%</td></tr>
-                <tr><th scope="row">B</th><td>0.20</td><td>0.20</td><td>0.30</td><td>0.30</td><td>63.6%</td></tr>
-                <tr><th scope="row">C</th><td>0.25</td><td>0.25</td><td>0.25</td><td>0.25</td><td>72.8%</td></tr>
-                <tr class="is-highlight"><th scope="row">D</th><td>0.35</td><td>0.35</td><td>0.20</td><td>0.10</td><td><strong>77.3%</strong></td></tr>
-                <tr><th scope="row">E</th><td>0.45</td><td>0.25</td><td>0.20</td><td>0.10</td><td>58.9%</td></tr>
-                <tr><th scope="row">F</th><td>0.25</td><td>0.45</td><td>0.20</td><td>0.10</td><td>73.9%</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <h3 class="card__title">A complement, not a replacement</h3>
+          <p>
+            Several participants still preferred ray casting for nearby precise work &mdash; P15 valued its
+            directness and explicit confirmation, P13 found it better for close targets. Preference tracked
+            distance, density and desired control, which points to task-dependent hybrid interaction.
+          </p>
           <p class="muted">
-            Balanced and nearly balanced gaze/semantic weighting (C, F, D) outperforms visual-confidence-heavy
-            configurations (A, B), and heavily biased gaze weighting (E) loses accuracy.
-          </p>
-        </div>
-
-        <div class="stack">
-          <div class="card card--accent">
-            <h3 class="card__title">Why head speed rose but workload fell</h3>
-            <p>
-              Under the Proposed method head rotation speed was higher (73&deg;/s vs 46&deg;/s), yet NASA&ndash;TLX
-              total and Physical Demand were lower. Higher head movement intensity did not translate into higher
-              subjective physical burden: users acquired targets through natural gaze shifts and speech expression
-              instead of sustained arm raising, fine ray aiming, and controller operation.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3 class="card__title">A complement, not a replacement</h3>
-            <p>
-              Some participants still valued the directness and explicit confirmation of ray casting &mdash; P15
-              preferred it because it felt closer to direct manipulation, and P13 described it as better suited to
-              nearby precise selection. Preference depended on task context, target distance, object density, and
-              desired control, which points toward task-dependent hybrid interaction design.
-            </p>
-            <p class="muted">
-              Reported evidence is limited to the outdoor vehicle-relocation scene evaluated here; the pipeline does
-              not rely on vehicle-specific selection rules, but generalisability remains to be established.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════ AUTHORS ══════════════════════ -->
-  <section class="section section--alt" id="authors">
-    <div class="shell">
-      <div class="section__head">
-        <span class="eyebrow">Authors</span>
-        <h2>Research team</h2>
-      </div>
-
-      <div class="authors">
-        <article class="author">
-          <img src="assets/img/author-1.webp" width="320" height="400" loading="lazy" alt="Portrait of Yuntong Zhang">
-          <h3>Yuntong Zhang</h3>
-          <p class="author__aff">Tianjin University of Technology (TJUT)</p>
-          <p>Undergraduate student majoring in Artificial Intelligence at the School of Electrical Engineering and Automation. Research interests: virtual reality interaction and multimodal human&ndash;computer interaction.</p>
-        </article>
-
-        <article class="author">
-          <img src="assets/img/author-2.webp" width="320" height="427" loading="lazy" alt="Portrait of Yue Yin">
-          <h3>Yue Yin <span class="author__role">Corresponding</span></h3>
-          <p class="author__aff">Defense Innovation Institute, AMS</p>
-          <p>Assistant Researcher. BSc and MSc from Beihang University (2016, 2019); PhD from The Hong Kong Polytechnic University (2025). Research interests: mixed reality and multimodal human&ndash;robot interaction.</p>
-        </article>
-
-        <article class="author">
-          <img src="assets/img/author-3.webp" width="320" height="448" loading="lazy" alt="Portrait of Yu Zhao">
-          <h3>Yu Zhao</h3>
-          <p class="author__aff">Tianjin Artificial Intelligence Innovation Center</p>
-          <p>Postdoctoral Research Associate, also with Harbin Institute of Technology (Shenzhen). BS Soochow University (2012), MS Southeast University (2015), PhD Tianjin University (2024). Research interests: natural language processing and intelligent human&ndash;computer interaction.</p>
-        </article>
-
-        <article class="author">
-          <img src="assets/img/author-4.webp" width="320" height="427" loading="lazy" alt="Portrait of Jiaxin Yu">
-          <h3>Jiaxin Yu</h3>
-          <p class="author__aff">Defense Innovation Institute, AMS</p>
-          <p>Assistant Researcher. Research interests: human&ndash;computer interaction and 3D spatial interaction, with a focus on multimodal interaction and user interface evaluation in virtual reality.</p>
-        </article>
-
-        <article class="author">
-          <img src="assets/img/author-5.webp" width="320" height="345" loading="lazy" alt="Portrait of Liang Xie">
-          <h3>Liang Xie</h3>
-          <p class="author__aff">National Innovation Institute of Defense Technology, AMS</p>
-          <p>Associate Researcher. BS, MS, and PhD from the National University of Defense Technology (2012, 2014, 2018). Research interests: computer vision, human&ndash;machine interaction, and mixed reality.</p>
-        </article>
-      </div>
-
-      <div class="grid grid--2 grid--gap-lg credits">
-        <div class="card card--flat">
-          <h3 class="card__title">Author contributions</h3>
-          <p>
-            <strong>Yuntong Zhang</strong> &mdash; conception, methodology, system implementation, experiments, data
-            analysis, manuscript writing. <strong>Yue Yin</strong> &mdash; conception, supervision, methodology
-            guidance, manuscript review. <strong>Yu Zhao</strong> &mdash; experiment support, manuscript review.
-            <strong>Jiaxin Yu</strong> &mdash; system discussion, manuscript review. <strong>Liang Xie</strong> &mdash;
-            supervision, resource support, manuscript review.
-          </p>
-        </div>
-        <div class="card card--flat">
-          <h3 class="card__title">Acknowledgements</h3>
-          <p>
-            This work was supported in part by the National Natural Science Foundation of China under Grants
-            62332019 and 62576356, the National Key Research and Development Program of China under Grants
-            2023YFF1203900 and 2023YFF1203903, and the Beijing Nova Program under Grant 20240484513.
+            Evidence is limited to the outdoor vehicle-relocation scene; the pipeline uses no
+            vehicle-specific rules, but generalisability is not yet established.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════ CITE ══════════════════════ -->
-  <section class="section" id="cite">
+  <!-- ═══════════════════════════ CITATION ═══════════════════════════ -->
+  <section class="section section--alt" id="cite">
     <div class="shell">
       <div class="section__head">
         <span class="eyebrow">Citation</span>
-        <h2>Cite this work</h2>
+        <h2>Reference &amp; contact</h2>
         <p class="section__lede">
-          The manuscript is under review at <em>Data Intelligence</em>. Bibliographic details will be updated upon
-          publication.
+          The manuscript is under review at <em>Data Intelligence</em>; bibliographic details will be updated
+          on publication. The full text is not hosted here.
         </p>
       </div>
 
@@ -762,29 +561,23 @@
 
         <div class="stack">
           <div class="card">
-            <h3 class="card__title">Plain text</h3>
-            <div class="card__codetop card__codetop--plain">
-              <span>APA-style</span>
-              <button class="copybtn" data-copy="plaincite" type="button">Copy</button>
-            </div>
-            <pre class="code"><code id="plaincite">Zhang, Y., Yin, Y., Zhao, Y., Yu, J., &amp; Xie, L. (2026).
-Multimodal-Assisted Task-Level Selection for Dense Similar
-Objects in Virtual Reality. Data Intelligence. Under review.</code></pre>
+            <h3 class="card__title">Authors</h3>
+            <ul class="author-list" id="author-list"></ul>
           </div>
-
           <div class="card card--flat">
-            <h3 class="card__title">Contact</h3>
-            <p>
-              For the full manuscript, supplementary material, or dataset requests, please contact the corresponding
-              author:
+            <h3 class="card__title">Access</h3>
+            <p class="muted">
+              For the full manuscript, supplementary material or dataset requests, contact the corresponding author.
             </p>
             <p class="contact">
               <a class="btn btn--small" href="mailto:yinyuebuaa@126.com?subject=Request%3A%20Multimodal-Assisted%20Task-Level%20Selection%20in%20VR">yinyuebuaa@126.com</a>
               <a class="btn btn--small btn--ghost" href="https://github.com/Yutong1313-Zed/vr-task-selection" rel="noopener">Source on GitHub</a>
             </p>
             <p class="muted small">
-              The full text is not hosted on this site while the manuscript is under review.
-            </p>          </div>
+              Supported by NSFC grants 62332019 and 62576356, the National Key R&amp;D Program of China under
+              2023YFF1203900 and 2023YFF1203903, and the Beijing Nova Program under 20240484513.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -799,16 +592,18 @@ Objects in Virtual Reality. Data Intelligence. Under review.</code></pre>
       <p class="muted small">Yuntong Zhang, Yue Yin, Yu Zhao, Jiaxin Yu, Liang Xie &middot; Data Intelligence, under review.</p>
     </div>
     <nav class="footer__nav" aria-label="Footer navigation">
-      <a href="#overview">Overview</a>
-      <a href="#method">Method</a>
-      <a href="#results">Results</a>
+      <a href="#demo">Live trial</a>
+      <a href="#pipeline">Pipeline</a>
+      <a href="#system">System</a>
+      <a href="#validation">Validation</a>
       <a href="#cite">Cite</a>
       <a href="#top">Back to top</a>
     </nav>
   </div>
   <div class="shell footer__note">
     <p class="muted small">
-      Figures and results reproduced from the manuscript for presentation purposes. No full text is distributed here.
+      Replay frames, object IDs and timing come from a recorded study trial; figures and result values are
+      reproduced from the manuscript. No full text is distributed here.
     </p>
   </div>
 </footer>

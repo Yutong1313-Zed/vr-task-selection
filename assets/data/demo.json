@@ -1,0 +1,193 @@
+{
+  "_comment": "Real values only. trial.* and missions.* are extracted from recorded trial metadata (Enve1/正式实验数据); results.* match the manuscript submitted to Data Intelligence. The page renders from this file so nothing is duplicated by hand.",
+
+  "trial": {
+    "source": "P01_Proposed_M1_20260530_143223",
+    "participant": "P01",
+    "condition": "Proposed",
+    "mission": "M1",
+    "instruction_zh": "请将黄色出租车1号和黄色出租车2号移动到停车区2。",
+    "instruction_en": "Move yellow taxi 1 and yellow taxi 2 to parking area 2.",
+    "targets": ["taxi-yellow-v-01", "taxi-yellow-v-02"],
+    "target_region": "parkinglot2",
+    "recording_start_ts": 344.451,
+    "speech_start_ts": 350.25,
+    "speech_end_ts": 356.903,
+    "recording_span_s": 12.452,
+    "speech_span_s": 6.653,
+    "completion_time_ms": 6652.4,
+    "timing_rule": "completion_time_ms = speech_end_ts - speech_start_ts",
+    "audio_sample_rate": 16000,
+    "gaze_sample_count": 182,
+    "gaze_rate_hz": 60,
+    "frame_count": 216,
+    "frame_rate_fps": 30,
+    "frame_size": "1920x960 stereo",
+    "rayhit_sample_count": 0
+  },
+
+  "missions": [
+    {
+      "id": "M1",
+      "zh": "请将黄色出租车1号和黄色出租车2号移动到停车区2。",
+      "en": "Move the taxi in the middle and the taxi on the right to parking area 2.",
+      "targets": ["taxi-yellow-v-01", "taxi-yellow-v-02"],
+      "region": "parkinglot2"
+    },
+    {
+      "id": "M2",
+      "zh": "请将红色卡车1号和红色卡车2号移动到停车区1。",
+      "en": "Move red truck 1 and red truck 2 to parking area 1.",
+      "targets": ["truck-red-v-01", "truck-red-v-02"],
+      "region": "parkinglot1"
+    },
+    {
+      "id": "M3",
+      "zh": "请将蓝色公交车1号和蓝色公交车2号移动到停车区3。",
+      "en": "Move bus 1 and bus 2 to parking area 3.",
+      "targets": ["bus-blue-v-01", "bus-blue-v-02"],
+      "region": "parkinglot3"
+    },
+    {
+      "id": "M4",
+      "zh": "请将上方白色救护车和右侧蓝色卡车移动到停车区3。",
+      "en": "Move the distant ambulance and the blue truck in the middle to parking area 3.",
+      "targets": ["vehicle-white-v-01", "r-blue-vehicle-01"],
+      "region": "parkinglot3"
+    },
+    {
+      "id": "M5",
+      "zh": "请将红色汽车1号和紫色汽车1号移动到停车区1。",
+      "en": "Move the leftmost car and the purple car at the intersection to parking area 1.",
+      "targets": ["car-red-v-01", "car-purple-v-01"],
+      "region": "parkinglot1"
+    }
+  ],
+
+  "stages": [
+    {
+      "key": "idle",
+      "t": 0.0,
+      "img": "assets/img/demo-idle.webp",
+      "title": "Standby",
+      "zh": "待机",
+      "detail": "Mission instruction shown head-up. The system is recording frames, gaze and audio but has not opened an interaction episode."
+    },
+    {
+      "key": "speech",
+      "t": 0.8,
+      "img": "assets/img/demo-speech.webp",
+      "title": "Speech onset",
+      "zh": "语音起点",
+      "detail": "Audio energy crosses the onset threshold. This instant becomes the episode's temporal anchor; ASR word timestamps are rebased onto Unity time from here."
+    },
+    {
+      "key": "gaze",
+      "t": 5.8,
+      "img": "assets/img/demo-gaze.webp",
+      "title": "Slot window",
+      "zh": "槽位对齐",
+      "detail": "Each target noun opens a ±1.5 s window. Within it the system collects the gaze sample set and picks the video frame nearest the noun onset."
+    },
+    {
+      "key": "fusion",
+      "t": 6.7,
+      "img": "assets/img/demo-fusion.webp",
+      "title": "Score & rank",
+      "zh": "融合排序",
+      "detail": "YOLOv8-seg candidates are bound to registry IDs, then scored on gaze attention, semantic match, template match and detector confidence."
+    },
+    {
+      "key": "done",
+      "t": 6.9,
+      "img": "assets/img/demo-done.webp",
+      "title": "Execute",
+      "zh": "场景执行",
+      "detail": "The ranked object IDs are returned to Unity, resolved through the object registry and executed as a scene command."
+    }
+  ],
+
+  "modalities": [
+    { "name": "Speech", "spec": "16 kHz mono PCM", "count": "1 clip per trial", "note": "Whisper word timestamps rebased to Unity time" },
+    { "name": "Gaze", "spec": "3D origin + direction, 60 Hz", "count": "182 samples", "note": "px, py, pz, vx, vy, vz, validity flags" },
+    { "name": "Video", "spec": "1920x960 stereo, ~30 fps", "count": "216 frames", "note": "First-person capture from the headset" },
+    { "name": "Registry", "spec": "category / colour / type / seq", "count": "fixed IDs", "note": "Binds temporary detections to executable scene objects" }
+  ],
+
+  "results": {
+    "conditions": ["Ray", "Proposed"],
+    "rows": [
+      { "metric": "Completion time T_c", "ray": "7.7 ± 3.7 s", "proposed": "6.6 ± 2.6 s", "delta": "−1.1 s", "test": "n.s., p = .054", "tone": "flat" },
+      { "metric": "Object accuracy Acc_obj", "ray": "64.1% ± 21.7%", "proposed": "77.3% ± 14.8%", "delta": "+13.2 pp", "test": "p < .001", "tone": "up", "highlight": true },
+      { "metric": "Strict task success Acc_trial", "ray": "75 / 100 (75%)", "proposed": "70 / 99 (71%)", "delta": "−4 pp", "test": "n.s., p = .442", "tone": "flat" },
+      { "metric": "Head rotation speed", "ray": "46°/s", "proposed": "73°/s", "delta": "+27°/s", "test": "descriptive", "tone": "flat" },
+      { "metric": "NASA–TLX total", "ray": "66.05 ± 19.65", "proposed": "42.25 ± 20.05", "delta": "−23.80", "test": "p = .0038", "tone": "up", "highlight": true },
+      { "metric": "Physical demand", "ray": "15.30", "proposed": "5.70", "delta": "−9.60", "test": "", "tone": "up" },
+      { "metric": "SUS", "ray": "—", "proposed": "79.38 ± 14.60", "delta": "Proposed only", "test": "", "tone": "flat" }
+    ],
+    "accuracy_chart": {
+      "groups": [
+        { "label": ["Object-level", "accuracy"], "ray": 64.1, "proposed": 77.3 },
+        { "label": ["Strict task", "success"], "ray": 75.0, "proposed": 70.7 }
+      ]
+    },
+    "tlx_chart": {
+      "max": 20,
+      "groups": [
+        { "label": "Mental", "ray": 11.9, "proposed": 7.95 },
+        { "label": "Physical", "ray": 15.3, "proposed": 5.7 },
+        { "label": "Temporal", "ray": 8.2, "proposed": 5.8 },
+        { "label": "Performance", "ray": 12.0, "proposed": 10.35 },
+        { "label": "Effort", "ray": 12.1, "proposed": 7.6 },
+        { "label": "Frustration", "ray": 6.55, "proposed": 4.85 }
+      ]
+    },
+    "ablation": [
+      { "label": "Full Method", "value": 77.3 },
+      { "label": "w/o Conflict Handling", "value": 71.5 },
+      { "label": "Speech + Vision", "value": 56.1 },
+      { "label": "Gaze + Vision", "value": 30.0 },
+      { "label": "Gaze-only", "value": 28.2 },
+      { "label": "Speech-only", "value": 16.7 }
+    ],
+    "density": [
+      { "density": "High", "acc": 81.9, "gaze_hit": 48.3, "slots": 20 },
+      { "density": "Medium", "acc": 74.2, "gaze_hit": 26.8, "slots": 39 },
+      { "density": "Low", "acc": 78.2, "gaze_hit": 37.6, "slots": 39 }
+    ],
+    "weights": [
+      { "config": "A", "wg": 0.1, "ws": 0.1, "wt": 0.4, "wc": 0.4, "acc": 55.8 },
+      { "config": "B", "wg": 0.2, "ws": 0.2, "wt": 0.3, "wc": 0.3, "acc": 63.6 },
+      { "config": "C", "wg": 0.25, "ws": 0.25, "wt": 0.25, "wc": 0.25, "acc": 72.8 },
+      { "config": "D", "wg": 0.35, "ws": 0.35, "wt": 0.2, "wc": 0.1, "acc": 77.3, "active": true },
+      { "config": "E", "wg": 0.45, "ws": 0.25, "wt": 0.2, "wc": 0.1, "acc": 58.9 },
+      { "config": "F", "wg": 0.25, "ws": 0.45, "wt": 0.2, "wc": 0.1, "acc": 73.9 }
+    ],
+    "fusion_weights": { "gaze": 0.35, "semantic": 0.35, "template": 0.2, "confidence": 0.1 }
+  },
+
+  "module_versions": [
+    { "name": "Headset", "value": "Pico 4 Pro", "note": "display, first-person video, microphone array, eye tracking" },
+    { "name": "ASR", "value": "Whisper", "note": "word-level timestamps" },
+    { "name": "Detector", "value": "YOLOv8-seg", "note": "instance masks and class confidence" },
+    { "name": "Language", "value": "DeepSeek", "note": "constrained slot parsing" },
+    { "name": "Runtime", "value": "Unity + Python", "note": "TCP client–server, Unity time as shared clock" }
+  ],
+
+  "response_packet": {
+    "selected_object_ids": [103, 104],
+    "scores": [0.92, 0.88],
+    "status": "success"
+  },
+
+  "sample_pipeline": [
+    { "step": "anchor", "label": "Speech anchor", "detail": "audio energy crosses onset threshold", "ms": 20 },
+    { "step": "asr", "label": "ASR", "detail": "word timestamps → absolute time", "ms": 140 },
+    { "step": "parse", "label": "Slot parsing", "detail": "action + target slots (category, colour)", "ms": 210 },
+    { "step": "window", "label": "Window", "detail": "±1.5 s around each target noun", "ms": 2 },
+    { "step": "detect", "label": "Detector", "detail": "candidate objects on the anchor frame", "ms": 95 },
+    { "step": "bind", "label": "Template binding", "detail": "candidates → fixed registry IDs", "ms": 25 },
+    { "step": "score", "label": "Fusion & ranking", "detail": "gaze · semantic · template · confidence", "ms": 15 },
+    { "step": "exec", "label": "Scene execution", "detail": "command returned to Unity", "ms": 60 }
+  ]
+}
